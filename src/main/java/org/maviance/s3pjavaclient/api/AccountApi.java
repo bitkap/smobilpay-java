@@ -62,7 +62,7 @@ public class AccountApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call accountGetCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call accountGetCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -90,10 +90,10 @@ public class AccountApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -106,13 +106,13 @@ public class AccountApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call accountGetValidateBeforeCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call accountGetValidateBeforeCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling accountGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = accountGetCall(xApiVersion, progressListener, progressRequestListener);
+        okhttp3.Call call = accountGetCall(xApiVersion, progressListener, progressRequestListener);
         return call;
 
         
@@ -141,7 +141,7 @@ public class AccountApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Account> accountGetWithHttpInfo(String xApiVersion) throws ApiException {
-        com.squareup.okhttp.Call call = accountGetValidateBeforeCall(xApiVersion, null, null);
+        okhttp3.Call call = accountGetValidateBeforeCall(xApiVersion, null, null);
         Type localVarReturnType = new TypeToken<Account>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -154,7 +154,7 @@ public class AccountApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call accountGetAsync(String xApiVersion, final ApiCallback<Account> callback) throws ApiException {
+    public okhttp3.Call accountGetAsync(String xApiVersion, final ApiCallback<Account> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -175,7 +175,7 @@ public class AccountApi {
             };
         }
 
-        com.squareup.okhttp.Call call = accountGetValidateBeforeCall(xApiVersion, progressListener, progressRequestListener);
+        okhttp3.Call call = accountGetValidateBeforeCall(xApiVersion, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Account>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

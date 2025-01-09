@@ -65,7 +65,7 @@ public class VerifyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call historystdGetCall(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call historystdGetCall(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -97,10 +97,10 @@ public class VerifyApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -113,13 +113,13 @@ public class VerifyApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call historystdGetValidateBeforeCall(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call historystdGetValidateBeforeCall(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling historystdGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = historystdGetCall(xApiVersion, timestampFrom, timestampTo, progressListener, progressRequestListener);
+        okhttp3.Call call = historystdGetCall(xApiVersion, timestampFrom, timestampTo, progressListener, progressRequestListener);
         return call;
 
         
@@ -152,7 +152,7 @@ public class VerifyApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<PaymentStatus>> historystdGetWithHttpInfo(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo) throws ApiException {
-        com.squareup.okhttp.Call call = historystdGetValidateBeforeCall(xApiVersion, timestampFrom, timestampTo, null, null);
+        okhttp3.Call call = historystdGetValidateBeforeCall(xApiVersion, timestampFrom, timestampTo, null, null);
         Type localVarReturnType = new TypeToken<List<PaymentStatus>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -167,7 +167,7 @@ public class VerifyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call historystdGetAsync(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo, final ApiCallback<List<PaymentStatus>> callback) throws ApiException {
+    public okhttp3.Call historystdGetAsync(String xApiVersion, LocalDate timestampFrom, LocalDate timestampTo, final ApiCallback<List<PaymentStatus>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -188,7 +188,7 @@ public class VerifyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = historystdGetValidateBeforeCall(xApiVersion, timestampFrom, timestampTo, progressListener, progressRequestListener);
+        okhttp3.Call call = historystdGetValidateBeforeCall(xApiVersion, timestampFrom, timestampTo, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<PaymentStatus>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -203,7 +203,7 @@ public class VerifyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call verifytxGetCall(String xApiVersion, String ptn, String trid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call verifytxGetCall(String xApiVersion, String ptn, String trid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -235,10 +235,10 @@ public class VerifyApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -251,13 +251,13 @@ public class VerifyApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call verifytxGetValidateBeforeCall(String xApiVersion, String ptn, String trid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call verifytxGetValidateBeforeCall(String xApiVersion, String ptn, String trid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling verifytxGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = verifytxGetCall(xApiVersion, ptn, trid, progressListener, progressRequestListener);
+        okhttp3.Call call = verifytxGetCall(xApiVersion, ptn, trid, progressListener, progressRequestListener);
         return call;
 
         
@@ -290,7 +290,7 @@ public class VerifyApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<PaymentStatus>> verifytxGetWithHttpInfo(String xApiVersion, String ptn, String trid) throws ApiException {
-        com.squareup.okhttp.Call call = verifytxGetValidateBeforeCall(xApiVersion, ptn, trid, null, null);
+        okhttp3.Call call = verifytxGetValidateBeforeCall(xApiVersion, ptn, trid, null, null);
         Type localVarReturnType = new TypeToken<List<PaymentStatus>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -305,7 +305,7 @@ public class VerifyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call verifytxGetAsync(String xApiVersion, String ptn, String trid, final ApiCallback<List<PaymentStatus>> callback) throws ApiException {
+    public okhttp3.Call verifytxGetAsync(String xApiVersion, String ptn, String trid, final ApiCallback<List<PaymentStatus>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -326,7 +326,7 @@ public class VerifyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = verifytxGetValidateBeforeCall(xApiVersion, ptn, trid, progressListener, progressRequestListener);
+        okhttp3.Call call = verifytxGetValidateBeforeCall(xApiVersion, ptn, trid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<PaymentStatus>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
