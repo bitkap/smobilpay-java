@@ -14,7 +14,7 @@ package org.maviance.s3pjavaclient.auth;
 
 import org.maviance.s3pjavaclient.Pair;
 
-import com.squareup.okhttp.Credentials;
+import okhttp3.Credentials;
 
 import java.util.Map;
 import java.util.List;

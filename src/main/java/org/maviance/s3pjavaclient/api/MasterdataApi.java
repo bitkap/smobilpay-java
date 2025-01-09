@@ -68,7 +68,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call cashinGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call cashinGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -98,10 +98,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -114,13 +114,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call cashinGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call cashinGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling cashinGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = cashinGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = cashinGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         return call;
 
         
@@ -151,7 +151,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Cashin>> cashinGetWithHttpInfo(String xApiVersion, Integer serviceid) throws ApiException {
-        com.squareup.okhttp.Call call = cashinGetValidateBeforeCall(xApiVersion, serviceid, null, null);
+        okhttp3.Call call = cashinGetValidateBeforeCall(xApiVersion, serviceid, null, null);
         Type localVarReturnType = new TypeToken<List<Cashin>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -165,7 +165,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call cashinGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Cashin>> callback) throws ApiException {
+    public okhttp3.Call cashinGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Cashin>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -186,7 +186,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = cashinGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = cashinGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Cashin>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -200,7 +200,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call cashoutGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call cashoutGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -230,10 +230,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -246,13 +246,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call cashoutGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call cashoutGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling cashoutGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = cashoutGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = cashoutGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         return call;
 
         
@@ -283,7 +283,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Cashout>> cashoutGetWithHttpInfo(String xApiVersion, Integer serviceid) throws ApiException {
-        com.squareup.okhttp.Call call = cashoutGetValidateBeforeCall(xApiVersion, serviceid, null, null);
+        okhttp3.Call call = cashoutGetValidateBeforeCall(xApiVersion, serviceid, null, null);
         Type localVarReturnType = new TypeToken<List<Cashout>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -297,7 +297,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call cashoutGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Cashout>> callback) throws ApiException {
+    public okhttp3.Call cashoutGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Cashout>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -318,7 +318,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = cashoutGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = cashoutGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Cashout>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -331,7 +331,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call merchantGetCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call merchantGetCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -359,10 +359,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -375,13 +375,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call merchantGetValidateBeforeCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call merchantGetValidateBeforeCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling merchantGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = merchantGetCall(xApiVersion, progressListener, progressRequestListener);
+        okhttp3.Call call = merchantGetCall(xApiVersion, progressListener, progressRequestListener);
         return call;
 
         
@@ -410,7 +410,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Merchant>> merchantGetWithHttpInfo(String xApiVersion) throws ApiException {
-        com.squareup.okhttp.Call call = merchantGetValidateBeforeCall(xApiVersion, null, null);
+        okhttp3.Call call = merchantGetValidateBeforeCall(xApiVersion, null, null);
         Type localVarReturnType = new TypeToken<List<Merchant>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -423,7 +423,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call merchantGetAsync(String xApiVersion, final ApiCallback<List<Merchant>> callback) throws ApiException {
+    public okhttp3.Call merchantGetAsync(String xApiVersion, final ApiCallback<List<Merchant>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -444,7 +444,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = merchantGetValidateBeforeCall(xApiVersion, progressListener, progressRequestListener);
+        okhttp3.Call call = merchantGetValidateBeforeCall(xApiVersion, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Merchant>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -458,7 +458,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call productGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call productGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -488,10 +488,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -504,13 +504,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call productGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call productGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling productGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = productGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = productGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         return call;
 
         
@@ -541,7 +541,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Product>> productGetWithHttpInfo(String xApiVersion, Integer serviceid) throws ApiException {
-        com.squareup.okhttp.Call call = productGetValidateBeforeCall(xApiVersion, serviceid, null, null);
+        okhttp3.Call call = productGetValidateBeforeCall(xApiVersion, serviceid, null, null);
         Type localVarReturnType = new TypeToken<List<Product>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -555,7 +555,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call productGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Product>> callback) throws ApiException {
+    public okhttp3.Call productGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Product>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -576,7 +576,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = productGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = productGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Product>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -589,7 +589,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call serviceGetCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call serviceGetCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -617,10 +617,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -633,13 +633,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call serviceGetValidateBeforeCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call serviceGetValidateBeforeCall(String xApiVersion, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling serviceGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = serviceGetCall(xApiVersion, progressListener, progressRequestListener);
+        okhttp3.Call call = serviceGetCall(xApiVersion, progressListener, progressRequestListener);
         return call;
 
         
@@ -668,7 +668,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Service>> serviceGetWithHttpInfo(String xApiVersion) throws ApiException {
-        com.squareup.okhttp.Call call = serviceGetValidateBeforeCall(xApiVersion, null, null);
+        okhttp3.Call call = serviceGetValidateBeforeCall(xApiVersion, null, null);
         Type localVarReturnType = new TypeToken<List<Service>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -681,7 +681,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call serviceGetAsync(String xApiVersion, final ApiCallback<List<Service>> callback) throws ApiException {
+    public okhttp3.Call serviceGetAsync(String xApiVersion, final ApiCallback<List<Service>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -702,7 +702,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = serviceGetValidateBeforeCall(xApiVersion, progressListener, progressRequestListener);
+        okhttp3.Call call = serviceGetValidateBeforeCall(xApiVersion, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Service>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -716,7 +716,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call serviceIdGetCall(String xApiVersion, Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call serviceIdGetCall(String xApiVersion, Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -745,10 +745,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -761,7 +761,7 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call serviceIdGetValidateBeforeCall(String xApiVersion, Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call serviceIdGetValidateBeforeCall(String xApiVersion, Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling serviceIdGet(Async)");
@@ -771,7 +771,7 @@ public class MasterdataApi {
             throw new ApiException("Missing the required parameter 'id' when calling serviceIdGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = serviceIdGetCall(xApiVersion, id, progressListener, progressRequestListener);
+        okhttp3.Call call = serviceIdGetCall(xApiVersion, id, progressListener, progressRequestListener);
         return call;
 
         
@@ -802,7 +802,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Service> serviceIdGetWithHttpInfo(String xApiVersion, Integer id) throws ApiException {
-        com.squareup.okhttp.Call call = serviceIdGetValidateBeforeCall(xApiVersion, id, null, null);
+        okhttp3.Call call = serviceIdGetValidateBeforeCall(xApiVersion, id, null, null);
         Type localVarReturnType = new TypeToken<Service>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -816,7 +816,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call serviceIdGetAsync(String xApiVersion, Integer id, final ApiCallback<Service> callback) throws ApiException {
+    public okhttp3.Call serviceIdGetAsync(String xApiVersion, Integer id, final ApiCallback<Service> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -837,7 +837,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = serviceIdGetValidateBeforeCall(xApiVersion, id, progressListener, progressRequestListener);
+        okhttp3.Call call = serviceIdGetValidateBeforeCall(xApiVersion, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Service>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -851,7 +851,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call topupGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call topupGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -881,10 +881,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -897,13 +897,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call topupGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call topupGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling topupGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = topupGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = topupGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         return call;
 
         
@@ -934,7 +934,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Topup>> topupGetWithHttpInfo(String xApiVersion, Integer serviceid) throws ApiException {
-        com.squareup.okhttp.Call call = topupGetValidateBeforeCall(xApiVersion, serviceid, null, null);
+        okhttp3.Call call = topupGetValidateBeforeCall(xApiVersion, serviceid, null, null);
         Type localVarReturnType = new TypeToken<List<Topup>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -948,7 +948,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call topupGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Topup>> callback) throws ApiException {
+    public okhttp3.Call topupGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Topup>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -969,7 +969,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = topupGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = topupGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Topup>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -983,7 +983,7 @@ public class MasterdataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call voucherGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call voucherGetCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1013,10 +1013,10 @@ public class MasterdataApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1029,13 +1029,13 @@ public class MasterdataApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call voucherGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call voucherGetValidateBeforeCall(String xApiVersion, Integer serviceid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xApiVersion' is set
         if (xApiVersion == null) {
             throw new ApiException("Missing the required parameter 'xApiVersion' when calling voucherGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = voucherGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = voucherGetCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         return call;
 
         
@@ -1066,7 +1066,7 @@ public class MasterdataApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Product>> voucherGetWithHttpInfo(String xApiVersion, Integer serviceid) throws ApiException {
-        com.squareup.okhttp.Call call = voucherGetValidateBeforeCall(xApiVersion, serviceid, null, null);
+        okhttp3.Call call = voucherGetValidateBeforeCall(xApiVersion, serviceid, null, null);
         Type localVarReturnType = new TypeToken<List<Product>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1080,7 +1080,7 @@ public class MasterdataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call voucherGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Product>> callback) throws ApiException {
+    public okhttp3.Call voucherGetAsync(String xApiVersion, Integer serviceid, final ApiCallback<List<Product>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1101,7 +1101,7 @@ public class MasterdataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = voucherGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
+        okhttp3.Call call = voucherGetValidateBeforeCall(xApiVersion, serviceid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Product>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

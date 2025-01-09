@@ -6,12 +6,13 @@
 
 package org.maviance.s3pjavaclient;
 
-import com.squareup.okhttp.*;
-import com.squareup.okhttp.internal.http.HttpMethod;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor.Level;
+
+import okhttp3.*;
+import okhttp3.internal.http.HttpMethod;
+import okhttp3.logging.HttpLoggingInterceptor;
 import okio.BufferedSink;
 import okio.Okio;
+import org.jetbrains.annotations.NotNull;
 import org.maviance.s3pjavaclient.auth.*;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
@@ -392,7 +393,7 @@ public class ApiClient {
         if (debugging != this.debugging) {
             if (debugging) {
                 loggingInterceptor = new HttpLoggingInterceptor();
-                loggingInterceptor.setLevel(Level.BODY);
+                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                 httpClient.interceptors()
                         .add(loggingInterceptor);
             } else {
@@ -433,7 +434,7 @@ public class ApiClient {
      * @return Timeout in milliseconds
      */
     public int getConnectTimeout() {
-        return httpClient.getConnectTimeout();
+        return httpClient.readTimeoutMillis();
     }
 
     /**
@@ -444,7 +445,7 @@ public class ApiClient {
      * @return Api client
      */
     public ApiClient setConnectTimeout(int connectionTimeout) {
-        httpClient.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
+        httpClient.newBuilder().connectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
 
@@ -453,7 +454,7 @@ public class ApiClient {
      * @return Timeout in milliseconds
      */
     public int getReadTimeout() {
-        return httpClient.getReadTimeout();
+        return httpClient.readTimeoutMillis();
     }
 
     /**
@@ -464,7 +465,7 @@ public class ApiClient {
      * @return Api client
      */
     public ApiClient setReadTimeout(int readTimeout) {
-        httpClient.setReadTimeout(readTimeout, TimeUnit.MILLISECONDS);
+        httpClient.newBuilder().readTimeout(readTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
 
@@ -473,7 +474,7 @@ public class ApiClient {
      * @return Timeout in milliseconds
      */
     public int getWriteTimeout() {
-        return httpClient.getWriteTimeout();
+        return httpClient.writeTimeoutMillis();
     }
 
     /**
@@ -484,7 +485,7 @@ public class ApiClient {
      * @return Api client
      */
     public ApiClient setWriteTimeout(int writeTimeout) {
-        httpClient.setWriteTimeout(writeTimeout, TimeUnit.MILLISECONDS);
+        httpClient.newBuilder().writeTimeout(writeTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
 
@@ -894,12 +895,7 @@ public class ApiClient {
     public <T> void executeAsync(Call call, final Type returnType, final ApiCallback<T> callback) {
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                callback.onFailure(new ApiException(e), 0, null);
-            }
-
-            @Override
-            public void onResponse(Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 T result;
                 try {
                     result = (T) handleResponse(response, returnType);
@@ -910,6 +906,11 @@ public class ApiClient {
                 }
                 callback.onSuccess(result, response.code(), response.headers()
                         .toMultimap());
+            }
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                callback.onFailure(new ApiException(e), 0, null);
             }
         });
     }
@@ -933,13 +934,8 @@ public class ApiClient {
                 // returning null if the returnType is not defined,
                 // or the status code is 204 (No Content)
                 if (response.body() != null) {
-                    try {
-                        response.body()
-                                .close();
-                    } catch (IOException e) {
-                        throw new ApiException(response.message(), e, response.code(), response.headers()
-                                .toMultimap());
-                    }
+                    response.body()
+                            .close();
                 }
                 return null;
             } else {
@@ -1171,7 +1167,7 @@ public class ApiClient {
      * @return RequestBody
      */
     public RequestBody buildRequestBodyFormEncoding(Map<String, Object> formParams) {
-        FormEncodingBuilder formBuilder = new FormEncodingBuilder();
+        FormBody.Builder formBuilder = new FormBody.Builder();
         for (Entry<String, Object> param : formParams.entrySet()) {
             formBuilder.add(param.getKey(), parameterToString(param.getValue()));
         }
@@ -1186,7 +1182,7 @@ public class ApiClient {
      * @return RequestBody
      */
     public RequestBody buildRequestBodyMultipart(Map<String, Object> formParams) {
-        MultipartBuilder mpBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
+        MultipartBody.Builder  mpBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         for (Entry<String, Object> param : formParams.entrySet()) {
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
@@ -1271,11 +1267,12 @@ public class ApiClient {
         if (keyManagers != null || trustManagers != null) {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(keyManagers, trustManagers, new SecureRandom());
-            httpClient.setSslSocketFactory(sslContext.getSocketFactory());
+
+            httpClient.newBuilder().sslSocketFactory(sslContext.getSocketFactory());
         } else {
-            httpClient.setSslSocketFactory(null);
+            httpClient.newBuilder().sslSocketFactory(null);
         }
-        httpClient.setHostnameVerifier(hostnameVerifier);
+        httpClient.newBuilder().hostnameVerifier(hostnameVerifier);
     }
 
     private KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
